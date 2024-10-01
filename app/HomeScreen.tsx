@@ -17,8 +17,6 @@ export default function HomeScreen() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuSlide] = useState(new Animated.Value(-300));
-  const navigation = useNavigation();
-
 
   const toggleMenu = () => {
     if (isMenuOpen) {
