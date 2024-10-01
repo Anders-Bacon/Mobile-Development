@@ -4,7 +4,6 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 import { RootStackParamList } from './navigation/types';
 import FrontPage from './screens/FrontPage';
 import CarListPage from './screens/CarListPage';
-import CheckOutPage from './screens/CheckOutPage';
 
 // Define the type for the navigation stack
 export type RootStackParamList = {
