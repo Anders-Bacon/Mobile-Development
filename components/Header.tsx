@@ -48,19 +48,19 @@ const Header: React.FC<HeaderProps> = ({ location }) => {
       <Animated.View
         style={[styles.sideMenu, { transform: [{ translateX: menuSlide }] }]}
       >
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.sidemenuButton}>
           <Text style={styles.menuButtonText}>Home</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.sidemenuButton}>
           <Text style={styles.menuButtonText}>About Us</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity  style={styles.menuButton}>
+        <TouchableOpacity  style={styles.sidemenuButton}>
           <Text style={styles.menuButtonText}>Contact Us</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.sidemenuButton}>
           <Text style={styles.menuButtonText}>Something</Text>
         </TouchableOpacity>
           
@@ -120,6 +120,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#000",
   },
+  sidemenuButton: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderColor: "#ddd",
+    backgroundColor: "ffff",
+  },
+
+  
+  
 });
 
 export default Header;

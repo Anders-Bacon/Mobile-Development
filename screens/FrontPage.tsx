@@ -9,7 +9,7 @@ import Container from '../components/Container';
 const FrontPage: React.FC = ({ navigation }) => {
   return (
     <Container>
-      <Header location="" onMenuPress={() => {}} />
+      <Header title='Header' location="" onMenuPress={() => {}} />
 
       <RoundedBox>
         <InputField placeholder="Hvor vil du leje bil?" />
