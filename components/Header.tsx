@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 interface HeaderProps {
@@ -8,12 +9,34 @@ interface HeaderProps {
   onMenuPress?: () => void;
 }
 
+
+
 const Header: React.FC<HeaderProps> = ({ location }) => {
   const navigation = useNavigation();
 
   const goToFrontPage = () => {
     navigation.navigate('FrontPage');
   }
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuSlide] = useState(new Animated.Value(-300));
+
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      Animated.timing(menuSlide, {
+        toValue: -300,
+        duration: 300,
+        useNativeDriver: false,
+      }).start(() => setIsMenuOpen(false));
+    } else {
+      setIsMenuOpen(true);
+      Animated.timing(menuSlide, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    }
+  };
 
   return (
     <View style={styles.headerContainer}>
@@ -23,9 +46,33 @@ const Header: React.FC<HeaderProps> = ({ location }) => {
       </TouchableOpacity>
         <Text style={styles.location}>{location}</Text>
       </View>
-      <TouchableOpacity style={styles.menuButton} onPress={() => { /* Menu action goes here */ }}>
+      <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
          <Text style={styles.hamburgerText}>☰</Text>
       </TouchableOpacity>
+
+      {/* Slide-out menu */}
+      <Animated.View
+        style={[styles.sideMenu, { transform: [{ translateX: menuSlide }] }]}
+      >
+        <TouchableOpacity style={styles.sidemenuButton}>
+          <Text style={styles.menuButtonText}>Home</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.sidemenuButton}>
+          <Text style={styles.menuButtonText}>About Us</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity  style={styles.sidemenuButton}>
+          <Text style={styles.menuButtonText}>Contact Us</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.sidemenuButton}>
+          <Text style={styles.menuButtonText}>Something</Text>
+        </TouchableOpacity>
+          
+      </Animated.View>
+
+
     </View>
   );
 };
@@ -62,6 +109,35 @@ const styles = StyleSheet.create({
   titleContainer: {
       flexDirection: 'column',
   },
+  sideMenu: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 300,
+    height: "100%",
+    backgroundColor: "#fff",
+    paddingTop: 60,
+    paddingHorizontal: 20,
+    zIndex: 1000, // Ensure it is above the main content
+    elevation: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+  },
+  menuButtonText: {
+    fontSize: 18,
+    color: "#000",
+  },
+  sidemenuButton: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderColor: "#ddd",
+    backgroundColor: "ffff",
+  },
+
+  
+  
 });
 
 export default Header;
