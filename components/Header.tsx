@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { CiMenuBurger } from "react-icons/ci"
 
 interface HeaderProps {
   title: string;
@@ -46,7 +47,9 @@ const Header: React.FC<HeaderProps> = ({ location }) => {
         <Text style={styles.location}>{location}</Text>
       </View>
       <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
-         <Text style={styles.hamburgerText}>☰</Text>
+         <Text style={styles.hamburgerText}>
+            <CiMenuBurger/>
+         </Text>
       </TouchableOpacity>
 
       {/* Slide-out menu */}
