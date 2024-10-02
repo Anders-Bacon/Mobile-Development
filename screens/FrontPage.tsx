@@ -12,11 +12,11 @@ const FrontPage: React.FC = ({ navigation }) => {
       <Header location="" onMenuPress={() => {}} />
 
       <RoundedBox>
-        <InputField placeholder="Hvor vil du leje bil?" />
-        <InputField placeholder="Afhentning" />
-        <InputField placeholder="Aflevering" />
+        <InputField placeholder="Your location?" />
+        <InputField placeholder="Pickup" />
+        <InputField placeholder="Return" />
 
-        <Button title="Find din bil" onPress={() => {}} />
+        <Button title="Find your car" onPress={() => {}} />
       </RoundedBox>
 
       {/* Rent your own car link */}

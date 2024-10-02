@@ -18,7 +18,8 @@ const Container: React.FC<ContainerProps> = ({ children, backgroundColor = '#fff
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    //paddingHorizontal: 10,
+    paddingTop: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },

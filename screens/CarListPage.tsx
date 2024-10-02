@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Header from '../components/Header';
 import Container from '../components/Container';
 import Button from '../components/Button';
@@ -14,6 +15,8 @@ interface Car {
 }
 
 const CarListPage: React.FC = () => {
+  const navigation = useNavigation();
+
   const [cars, setCars] = useState<Car[]>([
     {
       id: 1,
@@ -21,7 +24,6 @@ const CarListPage: React.FC = () => {
       price: 'xx Kr. per day',
       image: 'https://link-to-car1-image.com',
       details: 'Benzin, Manuel, 5 seats\nRange pr. tank: 350km\nDescription: "Hi, my name is Mark, and this is my car. You will receive the keys by me at the car\'s location."',
-      expanded: false,
     },
     {
       id: 2,
@@ -29,7 +31,6 @@ const CarListPage: React.FC = () => {
       price: 'xx Kr. per day',
       image: 'https://link-to-car2-image.com',
       details: 'Benzin, Automat, 4 seats\nRange pr. tank: 400km\nDescription: "My car is perfect for a family trip."',
-      expanded: false,
     },
     {
       id: 3,
@@ -37,38 +38,39 @@ const CarListPage: React.FC = () => {
       price: 'xx Kr. per day',
       image: 'https://link-to-car3-image.com',
       details: 'Diesel, Manual, 5 seats\nRange pr. tank: 600km\nDescription: "You will enjoy driving my fuel-efficient car."',
-      expanded: false,
     },
   ]);
 
+  const [expandedCarId, setExpandedCarId] = useState<number | null>(null);
+
   const toggleCarDetails = (carId: number) => {
-    setCars(prevCars =>
-      prevCars.map(car =>
-        car.id === carId ? { ...car, expanded: !car.expanded } : car
-      )
-    );
+    setExpandedCarId(prevCarId => (prevCarId === carId ? null : carId));
+  };
+
+  const goToCheckout = (car: Car) => {
+    navigation.navigate('CheckoutPage', { car });
   };
 
   return (
     <View style={styles.container}>
-      <Header />
+      <Header location ='Odense V'/>
 
       <ScrollView contentContainerStyle={styles.scrollView}>
         {cars.map(car => (
-          <View key={car.id} style={styles.carContainer}>
+          <View key={car.id} style={[styles.carContainer, expandedCarId === car.id && styles.carContainerExpanded]}>
             <Image source={{ uri: car.image }} style={styles.carImage} />
             <Text style={styles.carTitle}>{car.name}</Text>
             <Text style={styles.carPrice}>{car.price}</Text>
 
-            {car.expanded && (
+            {expandedCarId === car.id && (
               <View style={styles.carDetailsContainer}>
                 <Text style={styles.carDetails}>{car.details}</Text>
-                <Button title="Rent this car" onPress={() => {}} />
+                <Button title="Rent this car" onPress={() => goToCheckout(car)} />
               </View>
             )}
 
             <Button
-              title={car.expanded ? 'Hide Details' : 'View Details'}
+              title={expandedCarId === car.id ? 'Hide Details' : 'View Details'}
               onPress={() => toggleCarDetails(car.id)}
             />
           </View>
@@ -85,6 +87,7 @@ const styles = StyleSheet.create({
   container: {
       flex: 1,
       backgroundColor: '#fff',
+      paddingTop: 65,
   },
   carContainer: {
       marginBottom: 20,
@@ -122,6 +125,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#555',
     marginBottom: 10,
+  },
+  carContainerExpanded: {
+    height: 'auto',
   },
 });
 

@@ -4,15 +4,8 @@ import { createStackNavigator, StackNavigationProp } from '@react-navigation/sta
 import { RootStackParamList } from './navigation/types';
 import FrontPage from './screens/FrontPage';
 import CarListPage from './screens/CarListPage';
-import CheckOutPage from './screens/CheckOutPage';
+import CheckoutPage from './screens/CheckoutPage';
 
-// Define the type for the navigation stack
-export type RootStackParamList = {
-  FrontPage: undefined;
-  CarListPage: undefined;
-};
-
-// Create the Stack Navigator
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
@@ -21,6 +14,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="FrontPage">
         <Stack.Screen name="FrontPage" component={FrontPage} />
         <Stack.Screen name="CarListPage" component={CarListPage} />
+        <Stack.Screen name="CheckoutPage" component={CheckoutPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
