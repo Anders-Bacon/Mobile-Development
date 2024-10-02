@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="83899e94-6234-4c94-bd7d-fe284fdac57c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Container.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/navigation/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/navigation/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CarListPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CarListPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CheckoutPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CheckoutPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/FrontPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/FrontPage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

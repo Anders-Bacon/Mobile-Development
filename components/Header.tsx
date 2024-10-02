@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 interface HeaderProps {
   title: string;
   location: string;
-  onMenuPress?: () => void;
 }
 
 
@@ -136,8 +135,6 @@ const styles = StyleSheet.create({
     backgroundColor: "ffff",
   },
 
-  
-  
 });
 
 export default Header;
