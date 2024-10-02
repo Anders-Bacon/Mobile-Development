@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-
+import {setupDB} from "../Backend/DB"
 export default function Index() {
   return (
     <View
@@ -13,3 +13,4 @@ export default function Index() {
     </View>
   );
 }
+setupDB();
